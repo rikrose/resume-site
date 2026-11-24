@@ -121,8 +121,8 @@ and is downloaded automatically.
 2. Clone your copy and install everything:
 
    ```sh
-   git clone https://github.com/<your-username>/resume-website.git
-   cd resume-website
+   git clone https://github.com/rikrose/resume-site.git
+   cd resume-site
    vp install
    pnpm exec playwright install chromium
    ```
