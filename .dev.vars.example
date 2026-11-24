@@ -1,0 +1,15 @@
+# Local secrets for `wrangler dev`. Copy to .dev.vars (gitignored).
+# Production values are set with `wrangler secret put <NAME>`.
+
+# Where contact form messages go.
+CONTACT_TO=you@example.com
+
+# Log messages to the wrangler dev console instead of sending them, so local
+# testing needs no Resend key. Set to false (and add a real RESEND_API_KEY) to
+# send for real. Never set CONTACT_DRY_RUN in production.
+CONTACT_DRY_RUN=true
+RESEND_API_KEY=
+
+# Cloudflare's Turnstile test secret: always passes. Use with the test site key
+# 1x00000000000000000000AA. https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

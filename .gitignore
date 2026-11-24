@@ -1,0 +1,21 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
+.dev.vars*
+!.dev.vars.example
+
+# Storybook build, and Vitest reports and failure screenshots. Reference
+# screenshots (__screenshots__/) are committed.
+storybook-static
+.vitest
+*storybook.log

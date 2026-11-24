@@ -1,0 +1,37 @@
+# Cloudflare Workers static-assets headers.
+# https://developers.cloudflare.com/workers/static-assets/headers/
+#
+# __CSP_SCRIPT_HASHES__ is replaced after the build by scripts/write-csp.ts with
+# the SHA-256 hashes of the inline <script> tags in index.html. Those scripts
+# change between builds, so the hashes can't be written by hand.
+# challenges.cloudflare.com serves the Turnstile script and iframe used by the
+# contact form.
+#
+# X-Robots-Tag: noindex keeps every file (including the PDF) out of search
+# results; see robots.txt. To allow indexing, remove it together with
+# `noindex` in src/config.ts.
+#
+# Caching: every file gets one hour (pages, PDF, icons, preview image), so a
+# deploy reaches returning visitors within an hour. /assets/* overrides that
+# with a year, since those filenames change whenever their content does. When
+# two rules set the same header Cloudflare joins the values with a comma, so
+# the /assets/* rule removes the inherited one first with `! Cache-Control`.
+# API responses come from the Worker and set their own `no-store`.
+
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://challenges.cloudflare.com __CSP_SCRIPT_HASHES__; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-src https://challenges.cloudflare.com; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Robots-Tag: noindex
+  Cache-Control: public, max-age=3600
+
+# Vite puts a content hash in every filename under /assets, so these never
+# change at a given URL and can be cached for a year.
+/assets/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,6 @@
+# Crawling is allowed on purpose. The site is kept out of search results with
+# `noindex` (a meta tag and the X-Robots-Tag header), which crawlers can only
+# see if they're allowed to fetch the page. Disallowing here would also block
+# the bots that build link previews (LinkedInBot honours robots.txt).
+User-agent: *
+Allow: /

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#08080b" />
+    <title>Page not found · Your Name Here</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Self-contained: no scripts, so it works under the site's CSP as-is. -->
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #08080b;
+        --fg: #f4f4f6;
+        --fg-dim: #a3a3b2;
+        --border: #1f1f2b;
+        --grad: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        background:
+          radial-gradient(60rem 30rem at 50% -10%, rgb(124 58 237 / 0.18), transparent 70%),
+          var(--bg);
+        color: var(--fg);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        text-align: center;
+      }
+      .code {
+        margin: 0;
+        font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--fg-dim);
+      }
+      h1 {
+        margin: 0.75rem 0 0;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p.lead {
+        margin: 1rem auto 0;
+        max-width: 28rem;
+        line-height: 1.6;
+        color: var(--fg-dim);
+      }
+      a {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--fg);
+        text-decoration: none;
+        transition: border-color 150ms;
+      }
+      a:hover,
+      a:focus-visible {
+        border-color: #7c3aed;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">Error 404</p>
+      <h1>Page not found</h1>
+      <p class="lead">There's nothing at this address. The resume is on the home page.</p>
+      <a href="/">← Back to the resume</a>
+    </main>
+  </body>
+</html>

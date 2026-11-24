@@ -1,0 +1,25 @@
+allowBuilds:
+  esbuild: true
+  lightningcss: true
+  workerd: true
+packages:
+  - .
+onlyBuiltDependencies:
+  - esbuild
+  - lightningcss
+  - workerd
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
+  vite-plus: 1.4.0
+  # Vitest is bundled by vite-plus; these must match its exact version.
+  vitest: 5.0.5
+  "@vitest/browser-playwright": 5.0.5
+overrides:
+  vite@*: "catalog:"
+peerDependencyRules:
+  allowAny:
+    - vite
+  allowedVersions:
+    vite: "*"
+    # Storybook only reads vite-plus/versions to detect tool versions.
+    vite-plus: "*"
